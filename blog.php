@@ -1,82 +1,95 @@
 <!DOCTYPE html>
-<html lang="en" class="no-js">
-
+<html lang="en">
 <head>
-	<base href="" />
-	<!-- Basic Page Needs
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-G6Z6Y153JZ"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
 
-     ================================================== -->
+  gtag('config', 'G-K2ZVBPYDNK');
+</script>
 
-	 <meta charset="utf-8">
+<meta charset="utf-8">
 
-	 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
- 
-	 <link rel="icon" type="image/png" href="images/fav-img/favicon.png">
- 
-	 <title>Dr. Solanki Eye Hospital | Eye Hospital in Bangalore</title>
- 
-	 <meta name="description" content="">
- 
-	 <meta name="keywords" content="">
- 
-	 <meta name="author" content="">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+
+    <link rel="icon" type="image/png" href="images/fav-img/favicon.png">
+
+    <title>Dr. Solanki Eye Hospital | Eye Hospital in Bangalore</title>
+
+    <meta name="description" content="">
+
+    <meta name="keywords" content="">
+
+    <meta name="author" content="">
 
 
-	<!-- Mobile Specific Metas
+    <!-- Mobile Specific Metas
     
      ================================================== -->
 
-	<meta name="viewport"
-		content="width=device-width, user-scalable=no, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0">
+    <meta name="viewport"
+        content="width=device-width, user-scalable=no, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0">
 
-	<meta name="format-detection" content="telephone=no">
+    <meta name="format-detection" content="telephone=no">
 
 
-	<!-- Web Font
+    <!-- Web Font
 	 ============================================= -->
-	<link href="https://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700,800" rel="stylesheet">
-	<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700,800" rel="stylesheet">
 
-	
-	<!-- CSS
+
+    <!-- CSS
     
      ================================================== -->
 
 
-	<!-- Theme Color
+    <!-- Theme Color
 	============================================= -->
-	<link rel="stylesheet" id="color" href="css/blue.css">
+    <link rel="stylesheet" id="color" href="css/blue.css">
 
 
-	<!-- Medicom Style
+    <!-- Medicom Style
 	============================================= -->
-	<link rel="stylesheet" href="css/medicom.css">
+    <link rel="stylesheet" href="./css/medicom.css">
 
 
-	<!-- Bootstrap
+    <!-- This page
 	============================================= -->
-	<link rel="stylesheet" href="css/bootstrap.css">
+    <link href="css/revolution_style.css" rel="stylesheet">
+    <link href="css/settings.css" rel="stylesheet">
 
 
-	<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-	<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-	<!--[if lt IE 9]>
+    <!-- Bootstrap
+	============================================= -->
+    <link rel="stylesheet" href="css/bootstrap.css">
+
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
       <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
       <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
     <![endif]-->
 
 
 
-	<!-- Header Scripts
+    <!-- Header Scripts
     
     ================================================== -->
+
+    <script src="js/modernizr-2.6.2.min.js"></script>
 	<script src="js/Toogle.js"></script>
-	<script src="js/modernizr-2.6.2.min.js"></script>
 
-
-
+		
+    <!-- Template Stylesheet -->
+    <!-- <link href="../css/style.css" rel="stylesheet"> -->
+    <link rel="stylesheet" href="assets_blog/style.css">
+    
+    
 </head>
-
 
 
 
@@ -85,7 +98,26 @@
  <?php include("header.php"); ?>
     <!-- Header area end -->
       <!-- Breadcrumb area start  -->
-
+      <div class="breadcrumb__area theme-bg-1 p-relative z-index-11 pt-95 pb-95">
+         <div class="breadcrumb__thumb" data-background="assets/imgs/media/about_breadcrum.jpg"></div>
+         <div class="container">
+            <div class="row justify-content-center">
+               <div class="col-xxl-12">
+                  <div class="breadcrumb__wrapper text-center">
+                     <h2 class="breadcrumb__title" style="text-transform:none;">My Blog</h2>
+                     <div class="breadcrumb__menu">
+                        <nav>
+                           <ul>
+                              <li><span><a href="index.html">Home</a></span></li>
+                              <li><span style="color: #1C7CC4;">Blog</span></li>
+                           </ul>
+                        </nav>
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </div>
       <!-- Breadcrumb area start  -->
        
       <div class="page-wrapper">
