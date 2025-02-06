@@ -4335,8 +4335,20 @@ footer.dark .footer-bottom-text {
 	line-height: 32px;
 }
 
-
-
+.quick-links-items{
+	margin: 0px; 
+	padding-top: 3px; 
+	color: gray;
+}
+.fa-long-arrow-right{
+	color: #046ab0;
+}
+.footer-font-size{
+	font-size: 13spx;
+}
+.m-footer{
+padding: 50px;
+}
 /*------------------------------------------------------------------
 
 	BACK TO TOP
