@@ -2048,6 +2048,39 @@ background: url(../images/inner-pages/side-view-young-brunette-female-.jpg) no-r
 	border-bottom: 2px solid black;
 
 }
+.sub-page-banner-retina{
+	background: url(../images/inner-pages/retina1.png) no-repeat center;
+	background-size: 100%;
+	height: 440px;
+	border-bottom: 2px solid black;
+
+}
+.sub-page-banner-bladeless{
+	background: url(../images/inner-pages/bladelesslasik.png) no-repeat center;
+	background-size: 100%;
+	height: 440px;
+	border-bottom: 2px solid black;
+
+}
+.sub-page-banner-icl{
+	background: url(../images/inner-pages/icl.png) no-repeat center;
+	background-size: 100%;
+	height: 440px;
+	border-bottom: 2px solid black;
+
+}
+.sub-page-banner-toriclens{
+	background: url(../images/inner-pages/toriclens.png) no-repeat center;
+	background-size: 100%;
+	height: 440px;
+	border-bottom: 2px solid black;
+}
+.sub-page-banner-traveler{
+	background: url(../images/inner-pages/travellerdesk.png) no-repeat center;
+	background-size: 100%;
+	height: 440px;
+	border-bottom: 2px solid black;
+}
 .sub-page-banner-oculoplasty{
 	background: url(../images/inner-pages/future-technology-medicine-visio.jpg) no-repeat center;
 	background-size: 100%;
@@ -2164,8 +2197,8 @@ background: url(../images/inner-pages/side-view-young-brunette-female-.jpg) no-r
 
 .entry-title {
 	color: #fff;
-	padding: 110px 0 0;
-	margin-bottom: 0;
+	padding: 32px 0 0;
+	margin-bottom: 11;
 }
 
 .sub-page-banner p {
@@ -6778,9 +6811,10 @@ COLOR SWITCHER ONLY FOR DEMO
     display: flex;
     justify-content: space-between;
     width: 100%;
-    height: 60px;
+    height: 75px;
     padding: 15px 50px;
     align-items: center;
+	background-color: white;
 }
 
 .topHeadContent ul {

@@ -4513,11 +4513,13 @@ textarea.input-group-sm > .input-group-btn > .btn {
     color: #ffffff;
 }
 .breadcrumb {
-    padding: 8px 15px;
+    padding: 30px 15px;
     margin-bottom: 20px;
     list-style: none;
-    background-color: #f5f5f5;
+    /* background-color: #f5f5f5; */
     border-radius: 4px;
+    font-size: 23px;
+    margin-left:-93px;
 }
 .breadcrumb > li {
     display: inline-block;
@@ -4528,7 +4530,7 @@ textarea.input-group-sm > .input-group-btn > .btn {
     content: "/\00a0";
 }
 .breadcrumb > .active {
-    color: #999999;
+    color: #282626;
 }
 .pagination {
     display: inline-block;
