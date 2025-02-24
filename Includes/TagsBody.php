@@ -7,24 +7,11 @@ if (isset($_GET['Tag'])) {
 }
 
 ?>
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="utf-8">
-   <meta http-equiv="x-ua-compatible" content="ie=edge">
-   <title>KV | Blog</title>
-   <meta name="description" content="">
-   <meta name="viewport" content="width=device-width, initial-scale=1">
-   <link rel="shortcut icon" type="image/x-icon" href="../assets/imgs/logo/favicon.ico">
-</head>
-<body>
-    
-</body>
-</html>
+
 
 <div class="page-wrapper">
          <!-- Breadcrumb area start  -->
-      <div class="breadcrumb__area theme-bg-1 p-relative z-index-11 pt-95 pb-95">
+      <!-- <div class="breadcrumb__area theme-bg-1 p-relative z-index-11 pt-95 pb-95">
          <div class="breadcrumb__thumb" data-background="assets/imgs/media/about_breadcrum.jpg"></div>
          <div class="container">
             <div class="row justify-content-center">
@@ -44,7 +31,7 @@ if (isset($_GET['Tag'])) {
                </div>
             </div>
          </div>
-      </div>
+      </div> -->
       <!-- Breadcrumb area start  -->
 
         <!-- <div class="container"> -->

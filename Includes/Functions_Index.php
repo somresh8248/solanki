@@ -108,7 +108,7 @@ function DisplayPostsIndex() {
     $TotalRows          = mysqli_fetch_array($TotalPagesResult)[0];
     $TotalPages         = ceil($TotalRows / $NumberOfRecordsPerPage);
     
-    $Query = "SELECT * FROM blog_post LIMIT $Offset, $NumberOfRecordsPerPage";
+    $Query = "SELECT * FROM blog_post order by post_date desc LIMIT $Offset, $NumberOfRecordsPerPage";
     $Result = $Connection->query($Query);
     if($Result->num_rows > 0){
         while ($Row = $Result->fetch_assoc()){
@@ -119,7 +119,11 @@ function DisplayPostsIndex() {
             $PostContent = $Row['Post_Content'];
             $PostDate    = $Row['Post_Date'];
             $PostSlug    = $Row['Post_Slug'];
-            
+            // Meta
+            $MetaTitle   = $Row['MetaTitle'];
+            $MetaDesc    = $Row['MetaDesc'];
+            $MetaKey    = $Row['MetaKey'];
+            // Meta
             $PostContent = substr($PostContent, 0, 360);
             $PostContent = ValidateFormData($PostContent) . "...";
             $PostDate    = date('F j, Y', strtotime($PostDate));
@@ -138,7 +142,7 @@ function DisplayPostsIndex() {
                 <div class="w3-row">
                     <div class="w3-col m8 s12">
                         <p>
-                            <a href="Post/' . $PostSlug . '"><button class="w3-button w3-padding-large w3-white w3-border cust-btn"><b>READ MORE »</b></button></a>
+                            <a href="Blog/' . $PostSlug . '"><button class="w3-button w3-padding-large w3-white w3-border cust-btn"><b>READ MORE »</b></button></a>
                         </p>
                     </div>
                     <div class="w3-col m4 w3-hide-small">
@@ -209,7 +213,7 @@ function DisplayPostsTag($TagID) {
                 <div class="w3-row">
                     <div class="w3-col m8 s12">
                           <p>
-                            <a href="Post/' . $PostSlug . '"><button class="w3-button w3-padding-large w3-white w3-border cust-btn"><b>READ MORE »</b></button></a>
+                            <a href="Blog/' . $PostSlug . '"><button class="w3-button w3-padding-large w3-white w3-border cust-btn"><b>READ MORE »</b></button></a>
                         </p>
                     </div>
                     <div class="w3-col m4 w3-hide-small">
@@ -413,9 +417,9 @@ function IDToPost($PostID){
             $current_url = $_SERVER['REQUEST_URI'];
 
             // Check if the URL contains 'Post/' or not
-            if (strpos($current_url, 'Post/') === false) {
+            if (strpos($current_url, 'Blog/') === false) {
                 // If 'Post/' is not found, prepend 'Post/' to the slug
-                $slug = 'Post/' . $slug;
+                $slug = 'Blog/' . $slug;
             }
             
             echo '<li class="w3-padding-16">

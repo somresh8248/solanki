@@ -3,7 +3,7 @@
 $Host       ='localhost:3307';
 $DBUser     ='root';
 $DBPass     ='';
-$DB         ='blog2';
+$DB         ='blog4';
 
 //Create Connection
 

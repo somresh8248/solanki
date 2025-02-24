@@ -24,9 +24,32 @@ if (isset($_GET['slug'])) {
     exit();
 }
 
+
 // Update Post Stats
 $Query = "SELECT * FROM post_visits WHERE Post_ID = '$PostID'";
 $Result = $Connection->query($Query);
+
+$Query = "SELECT * FROM blog_post WHERE Post_ID = '$PostID'";
+$Result = $Connection->query($Query);
+
+if ($Result->num_rows > 0) {
+    while($row = $Result->fetch_assoc()) {
+      // Meta
+        $MetaTitle=$row['MetaTitle'];
+      
+        $MetaDesc = $row['MetaDesc'];
+        $MetaKey = $row['MetaKey'];
+      //   Meta
+    }
+} 
+//meta Information
+// if ($Result && $Result->num_rows > 0) {
+//    $Row = $Result->fetch_assoc();
+//    $MetaTitle = $Row['MetaTitle'];
+//    $MetaDesc = $Row['MetaDesc'];
+//    $MetaKey = $Row['MetaKey'];
+// }
+// Meta Information
 
 if ($Result && $Result->num_rows > 0) {
     $Query = "UPDATE post_visits SET Post_Visits = Post_Visits + 1 WHERE Post_ID = '$PostID'";
@@ -38,308 +61,537 @@ if ($Result && $Result->num_rows > 0) {
 ?>
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="no-js">
 
 <head>
-    <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-G6Z6Y153JZ"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
+	<base href="" />
+	<!-- Basic Page Needs
 
-  gtag('config', 'G-G6Z6Y153JZ');
-</script>
+     ================================================== -->
 
+
+
+	<meta charset="utf-8">
+
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+
+	<link rel="icon" type="image/png" href="../images/fav-img/favicon.png">
+
+	<title>Dr. Solanki Eye Hospital | Eye Hospital in Bangalore</title>
+
+	<meta name="description" content="">
+
+	<meta name="keywords" content="">
+
+	<meta name="author" content="">
+   <meta name="keywords" content="<?php echo $MetaKey?>">
+    <meta name="description" content="<?php echo $MetaDesc?>">
+    <meta name="title" content="<?php echo $MetaTitle?>">
+
+
+	<!-- Mobile Specific Metas
     
-		<!-- <link rel="icon" href="../New_img/favicon.png" type="image/x-icon" /> -->
+     ================================================== -->
+
+	<meta name="viewport"
+		content="width=device-width, user-scalable=no, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0">
+
+	<meta name="format-detection" content="telephone=no">
+
+
+	<!-- Web Font
+	 ============================================= -->
+	<link href="../https://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700,800" rel="stylesheet">
+
+
+	<!-- CSS
     
+     ================================================== -->
 
-    <!-- Google Fonts -->
-		<link href="https://fonts.googleapis.com/css?family=Poppins:200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i&display=swap" rel="stylesheet">
-    <!-- Icon Font Stylesheet -->
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
 
-    <!-- Libraries Stylesheet -->
-    <!-- <link href="lib/animate/animate.min.css" rel="stylesheet"> -->
-    <!-- <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet"> -->
-    <!-- <link href="lib/tempusdominus/css/tempusdominus-bootstrap-4.min.css" rel="stylesheet" /> -->
+	<!-- Theme Color
+	============================================= -->
+	<link rel="stylesheet" id="color" href="../css/blue.css">
 
-    <!-- Customized Bootstrap Stylesheet -->
-    <link href="../assets/css/bootstrap.min.css" rel="stylesheet">
-    <meta charset="utf-8">
-   <meta http-equiv="x-ua-compatible" content="ie=edge">
-   <title>KV | Blog</title>
-   <meta name="description" content="">
-   <meta name="viewport" content="width=device-width, initial-scale=1">
-   <link rel="shortcut icon" type="image/x-icon" href="../assets/imgs/logo/favicon.ico">
-		
-		
-		
-    <link rel="stylesheet" href="../assets_blog/style.css">
-    <link rel="stylesheet" href="../assets/css/main.css">
-    <link rel="stylesheet" href="../assets/css/bootstrap.min.css">
-   <link rel="stylesheet" href="../assets/css/meanmenu.min.css">
-   <link rel="stylesheet" href="../assets/css/animate.css">
-   <link rel="stylesheet" href="../assets/css/swiper.min.css">
-   <link rel="stylesheet" href="../assets/css/slick.css">
-   <link rel="stylesheet" href="../assets/css/magnific-popup.css">
-   <link rel="stylesheet" href="../assets/css/fontawesome-pro.css">
-   <link rel="stylesheet" href="../assets/css/spacing.css">
-   <link rel="stylesheet" href="../assets/css/main.css">
-		
-    <!-- Template Stylesheet -->
-    <!-- <link href="../css/style.css" rel="stylesheet"> -->
-    <link rel="stylesheet" href="../assets_blog/style.css">
+
+	<!-- Medicom Style
+	============================================= -->
+	<link rel="stylesheet" href="../css/medicom.css">
+	<link rel="stylesheet" href="../assets_blog/style.css">
+
+
+	<!-- This page
+	============================================= -->
+	<link href="../css/revolution_style.css" rel="stylesheet">
+	<link href="../css/settings.css" rel="stylesheet">
+
+
+	<!-- Bootstrap
+	============================================= -->
+	<link rel="stylesheet" href="../css/bootstrap.css">
+
+	<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1" />
+
+	<!-- Link Swiper's CSS -->
+	<link rel="stylesheet" href="../https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css" />
+
+	<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+	<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+	<!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+      <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+    <![endif]-->
+
+
+
+	<!-- Header Scripts
     
+    ================================================== -->
+
+	<script src="../js/modernizr-2.6.2.min.js"></script>
+	<script src="../js/Toogle.js"></script>
 </head>
 
-<body>
-       <!-- preloader start -->
-   <div id="preloader">
-      <div class="bd-loader-inner">
-         <div class="bd-loader">
-            <span class="bd-loader-item"></span>
-            <span class="bd-loader-item"></span>
-            <span class="bd-loader-item"></span>
-            <span class="bd-loader-item"></span>
-            <span class="bd-loader-item"></span>
-            <span class="bd-loader-item"></span>
-            <span class="bd-loader-item"></span>
-            <span class="bd-loader-item"></span>
-         </div>
-      </div>
-   </div> 
-   <!-- preloader start -->
+<body class="fixed-header" style="overflow: visible;">
 
-   <!-- Back to top start -->
-   <div class="backtotop-wrap cursor-pointer">
-      <svg class="backtotop-circle svg-content" width="100%" height="100%" viewBox="-1 -1 102 102">
-         <path d="M50,1 a49,49 0 0,1 0,98 a49,49 0 0,1 0,-98" />
-      </svg>
-   </div>
-   <!-- Back to top end -->
+	<!-- Document Wrapper
+		============================================= -->
+	<div id="wrapper" class="clearfix">
+		<div class="tophead">
+			<div class="logo">
+				<a href="Insurance.html"><img src="../images/logo.png" alt="" title="" class="navbar-brands"></a>
+			</div>
+			<div class="topHeadContent">
+				<ul>
+					<!-- <li> <a href="index.html">Home</a></li> -->
+					<li> <a href="../Patient-stories.html">Patient Stories</a></li>
+					<!-- <li> <a href="Eye-Donation.html">Eye Donation</a></li> -->
+					<li> <a href="../Book-Appointment.html">Book An Appointment</a></li>
+					<li> <a href="../Internship.html">Internship</a></li>
+					<li> <a href="../tel:95916 38909" class="emergency-button btn-danger">Emergency : +91 95916 38909</a></li>
 
-   <!-- search area start -->
-   <div class="df-search-area">
-      <div class="container">
-         <div class="row">
-            <div class="col-xl-12">
-               <div class="df-search-form">
-                  <div class="df-search-close text-center mb-20">
-                     <button class="df-search-close-btn df-search-close-btn"></button>
-                  </div>
-                  <form action="#">
-                     <div class="df-search-input mb-10">
-                        <input type="text" placeholder="Search for product...">
-                        <button type="submit"><i class="flaticon-search-1"></i></button>
-                     </div>
-                     <div class="df-search-category">
-                        <span>Search by : </span>
-                        <a href="#">Healthline, </a>
-                        <a href="#">COVID-19, </a>
-                        <a href="#">Surgery, </a>
-                        <a href="#">Surgeon, </a>
-                        <a href="#">Medical research</a>
-                     </div>
-                  </form>
-               </div>
-            </div>
-         </div>
-      </div>
-   </div>
-   <div class="body-overlay"></div>
-   <!-- search area end -->
+				</ul>
+			</div>
 
-   <!-- Offcanvas area start -->
-   <div class="fix">
-      <div class="offcanvas__info">
-         <div class="offcanvas__wrapper">
-            <div class="offcanvas__content">
-               <div class="offcanvas__top mb-40 d-flex justify-content-between align-items-center">
-                  <div class="offcanvas__logo">
-                     <a href="dashboard.html">
-                        <img src="../assets/imgs/logo/KV_LOGO.webp" alt="logo not found" style="width:170px !important">
-                     </a>
-                  </div>
-                  <div class="offcanvas__close">
-                     <button>
-                        <i class="fal fa-times"></i>
-                     </button>
-                  </div>
-               </div>
+		</div>
 
-               <div class="mobile-menu fix mb-40"></div>
-               <div class="offcanvas__contact mt-30 mb-20">
-                  <h4>Contact Info</h4>
-                  <ul>
-                     <li class="d-flex align-items-center">
-                        <div class="offcanvas__contact-icon mr-15">
-                           <i class="fal fa-map-marker-alt"></i>
-                        </div>
-                        <div class="offcanvas__contact-text">
-                           <a target="_blank"
-                              href="https://maps.app.goo.gl/7xj9XBKve82Zqtkh6">
-                              Kalppa Virusha hospital RG Arcade, Sarjapur Rd, Anekal Taluk, Attibele, Anekal Taluk, Attibele, Bangalore-562107
-                           </a>
-                        </div>
-                     </li>
-                     <li class="d-flex align-items-center">
-                        <div class="offcanvas__contact-icon mr-15">
-                           <i class="far fa-phone"></i>
-                        </div>
-                        <div class="offcanvas__contact-text">
-                           <a href="tel:+91843-192-2016">+91843-192-2016</a>
-                        </div>
-                     </li>
-                     <li class="d-flex align-items-center">
-                        <div class="offcanvas__contact-icon mr-15">
-                           <i class="fal fa-envelope"></i>
-                        </div>
-                        <div class="offcanvas__contact-text">
-                           <a href="mailto:prasadhospitalyel@gmail.com."><span>care.kvh@gmail.com</span></a>
-                        </div>
-                     </li>
-                  </ul>
-               </div>
-               <div class="offcanvas__social">
-                  <ul>
-                     <li><a href="https://www.facebook.com/Kalppavirushahospital"><i class="fab fa-facebook-f"></i></a></li>
-                     <li><a href="https://x.com/Kalppa_virusha"><i class="fab fa-twitter"></i></a></li>
-                     <li><a href="https://www.instagram.com/kalppavirusha/"><i class="fab fa-instagram"></i></a></li>
-                     <li><a href="https://www.linkedin.com/company/26620598/admin/"><i class="fab fa-linkedin"></i></a></li>
-                     <li><a href="https://in.pinterest.com/kalppavirushahospital/"><i class="fab fa-pinterest"></i></a></li>
-                  </ul>
-               </div>
-            </div>
-         </div>
-      </div>
-   </div>
-   <div class="offcanvas__overlay"></div>
-   <div class="offcanvas__overlay-white"></div>
-   <!-- Offcanvas area start -->
+		<!-- Header
+		============================================= -->
+		<header id="header" class="medicom-header medical-nav no-mobile">
 
-   <!-- Header area start -->
-   <header>
-      <div id="header-sticky" class="header-area">
-         <div class="container-fluid">
-            <div class="mega-menu-wrapper">
-               <div class="header-main">
-                  <div class="header-left">
-                     <div class="header-logo">
-                        <a href="index.html">
-                        <img src="../assets/imgs/logo/KV_LOGO.webp" alt="logo not found" >
-                        <!--  <img src="assets/imgs/logo/KV_LOGO.webp" alt="logo not found" > -->
-                        </a>
-                     </div>
-                     <div class="mean__menu-wrapper d-none d-lg-block">
-                        <div class="main-menu">
-                           <nav id="mobile-menu">
-                              <ul>
-                                 <li>
-                                    <a href="../index.html">Home</a>
-                                 </li>
-                                 <li>
-                                    <a href="../about.html">About</a>
-                                 </li>
-                                 <li>
-                                    <a href="../service.html">Services</a>
-                                 </li>
-                                 <li>
-                                    <a href="../team.html">Team</a>
-                                 </li>
-                                                                  <li>
-                                    <a href="../blog.php">Blogs</a>
-                                 </li>
-                                 <li>
-                                    <a href="../gallery1.html">Gallery</a>
-                                 </li>
-                                 <li>
-                                    <a href="../contact.html">Contact</a>
-                                 </li>
-                              </ul>
-                           </nav>
-                           <!-- for wp -->
-                           <div class="header__hamburger ml-50 d-none">
-                              <button type="button" class="hamburger-btn offcanvas-open-btn">
-                                 <span>01</span>
-                                 <span>01</span>
-                                 <span>01</span>
-                              </button>
-                           </div>
-                        </div>
-                     </div>
-                  </div>
-                  <div class="header-right d-flex align-items-center justify-content-end ">
-                     <div class="header-action d-none d-lg-inline-flex gap-3 ">
-                        <div class="link-text d-none d-xxl-block">
-                           <span><img src="../assets/imgs/svg/phone-call.svg" alt=""></span>
-                           <span><a href="tel:+918431922016">+918431922016</a></span>
-                        </div>
-                        <div class="header-lang-item header-lang d-none d-xl-block">
+			<!-- Top Row
+			============================================= -->
+			<div class="solid-row"></div>
 
-                        </div>
-                        <div style="background-color:#092A53 !important;" class="header-quick-access d-flex align-items-center">
-                         
-                           <div class="divider-line"></div>
-                           <div class="header__hamburger">
-                              <div class="sidebar__toggle">
-                                 <a class="bar-icon is-white" href="javascript:void(0)">
-                                    <span></span>
-                                    <span>
-                                       <small></small>
-                                    </span>
-                                    <span></span>
-                                 </a>
-                              </div>
-                           </div>
-                        </div>
-                     </div>
-                  </div>
-                  <div class="header__hamburger d-lg-none">
-                     <div class="sidebar__toggle">
-                        <a class="bar-icon" href="javascript:void(0)">
-                           <span></span>
-                           <span>
-                              <small></small>
-                           </span>
-                           <span></span>
-                        </a>
-                     </div>
-                  </div>
-               </div>
-            </div>
-         </div>
-      </div>
-   </header>
-   <!-- Header area end -->
+			<div class="container-fluid">
 
-    
 
-        <!-- Page Title -->
-       <!-- Breadcrumb area start  -->
-      <div class="breadcrumb__area theme-bg-1 p-relative z-index-11 pt-95 pb-95">
-         <div class="breadcrumb__thumb" data-background="../assets/imgs/media/about_breadcrum.jpg"></div>
-         <div class="container">
-            <div class="row justify-content-center">
-               <div class="col-xxl-12">
-                  <div class="breadcrumb__wrapper text-center">
-                     <h2 class="breadcrumb__title" style="text-transform:none;">My Blog</h2>
-                     <div class="breadcrumb__menu">
-                        <nav>
-                           <ul>
-                              <li><span><a href="index.html">Home</a></span></li>
-                              <li><a href="../blog.php" style="color: #1C7CC4;">Blog</a></li>
-                              <li><span style="color: #1C7CC4;"><?php blogTitle($PostID); ?></span></li>
-                           </ul>
-                        </nav>
-                     </div>
-                  </div>
-               </div>
-            </div>
-         </div>
-      </div>
+
+				<!-- Primary Navigation
+				============================================= -->
+				<nav class="navbar navbar-default mobilenav-default" role="navigation" id="primary-nav1">
+
+					<!-- Brand and toggle get grouped for better mobile display
+					============================================= -->
+					<div class="logo">
+						<a href="../index.html"><img src="../images/logo.png" alt="" title="" class="navbar-brands2"></a>
+					</div>
+
+					<div class="navbar-header">
+
+						<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#primary-nav">
+							<span class="sr-only">Toggle navigation</span>
+							<span class="icon-bar"></span>
+							<span class="icon-bar"></span>
+							<span class="icon-bar"></span>
+						</button>
+
+
+					</div>
+
+
+					<div class="collapse navbar-collapse navbar-right" id="primary-nav">
+
+						<ul class="nav navbar-nav">
+							<li class="dropdown">
+								<a href="../index.html" class="dropdown-toggle" ><i class="fa fa-plus"></i>Home
+									</a>
+								
+							</li>
+                            <li class="dropdown">
+								<a href="../about-us.html" class="dropdown-toggle" ><i
+										class="fa fa-plus"></i>About DSEH</a>
+								<!-- <ul class="dropdown-menu">
+									<li><a href="about-us.html">About Us One</a></li>
+									<li><a href="about-us2.html">About Us Two</a></li>
+								</ul> -->
+
+							</li>
+
+                           
+							<li class="mega-menu-item dropdown">
+								<a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-plus"></i>Our
+									Specialties</a>
+								<div class="mega-menu dropdown-menu">
+									<br>
+									<img src="../images/banner/specialist-banner.jpg" class="img-rounded padding-bottom-20" alt="" title="">
+									<ul>
+										<li><a href="../Comprehensive-ophthalmology.html">Comprehensive Ophthalmology</a>
+										</li>
+										<li><a href="../cataract.html">Cataract</a></li>
+										<li><a href="../LASIK-and-Refractive.html">LASIK and Refractive</a></li>
+										<li><a href="../Vitreo-Retina.html">Vitreo Retina and Diabetic Retinopathy
+												 </a></li>
+										<li><a href="../Glaucoma.html">Glaucoma   </a></li>
+
+									</ul>
+									<ul>
+										<li><a href="../Cornea.html">Cornea  </a></li>
+										<li><a href="../Pediatric-Ophthalmology-and-Squint.html">Pediatric Ophthalmology &
+												Squint</a></li>
+										<li><a href="../Oculoplasty.html">Oculoplasty</a></li>
+										<li><a href="../Optometry.html">Optometry  <br><br></a></li>
+										<!-- <li><a href="Second-Opinion.html">Second Opinion </a></li> -->
+
+									</ul>
+
+								</div>
+							</li>
+
+							<li class="dropdown">
+								<a href="../Our-Team.html" class="dropdown-toggle" ><i class="fa fa-plus"></i>Our
+									Team</a>
+								<!-- <ul class="dropdown-menu">
+									<li><a href="about-us.html">About Us One</a></li>
+									<li><a href="about-us2.html">About Us Two</a></li>
+								</ul> -->
+							</li>
+							<li class="mega-menu-item">
+								<a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-plus"></i>Our
+									Facilities</a>
+								<div class="mega-menu dropdown-menu">
+									<img src="../images/banner/international-image.jpg" class="img-rounded" alt="" title="">
+									<ul>
+
+										<li class="dropdown-mega">
+											<div class="drop-home">Other Services
+											<ul class="drop-items" style="padding: 0;">
+											
+												<li> <a style="padding-left: 10px;" class="drop-link" href="../Payments-EMI.html">Payments-EMI </a></li>
+												<!-- <li> <a class="drop-link" href="Registration-Form.html">Registration-Form</a></li> -->
+												<li> <a class="drop-link" href="../Self-Evaluation.html">Self-Evaluation</a></li>
+												<li> <a class="drop-link" href="../TravelerDesk.html">Traveller desk</a></li>
+												<li> <a class="drop-link" href="../Explainer-video.html">Explainer-video</a></li>
+												
+											</ul>
+										</div>
+											<a href="#"></a>
+										</li>
+										
+										
+                                         
+										<!-- <li class="dropdown">
+											<div  class="dropdown-toggle" data-toggle="dropdown">About Us</div>
+											<ul class="dropdown-menu">                                                                                          
+											  <li><a href="about-us.html">About Us One</a></li>
+											  <li><a href="about-us2.html">About Us Two</a></li>
+											</ul>
+										</li> -->
+
+										<li class="dropdown-mega">
+											<!-- <a href="#" class="dropdown-toggle">Specialized Ophthalmic Services</a> -->
+                           <!-- <ul class="dropdown-menu">
+									<li><a href="about-us.html">About Us One</a></li>
+									<li><a href="about-us2.html">About Us Two</a></li>
+								</ul> -->
+								        <br>
+										<div  class="drop-home">Specialized Ophthalmic Services
+											 
+											<ul class="drop-items" style="padding: 0;">
+												<li> 
+													<!-- <a class="drop-link" href="#"> -->
+												   <div class="drop-home-child ">
+													Cataract
+													 <ul class="drop-items-child">
+														<li><a class="drop-link-child" href="../Monofocal.html">Monofocal</a></li>
+														<li><a class="drop-link-child" href="../Multifocal.html">Multifocal</a></li>
+														<li><a class="drop-link-child" href="../toric-lens.html">Toric lens</a></li>
+														<li><a class="drop-link-child" href="../Refractive-Surgeries.html">Refractive Surgeries</a></li>
+														<li><a class="drop-link-child" href="../Phakic-intraocular-lens.html">Phakic IOL Implementation</a></li>
+													 </ul>
+												   </div>	
+												<!-- </a> -->
+												 
+												</li>
+												<li>
+													 <!-- <a class="drop-link" href="#"> -->
+														
+													<!-- </a> -->
+													<div class="drop-home-child " style="padding-left: 10px;">
+														Cornea & Refractive
+														 <ul class="drop-items-child">
+															<li><a href="Bladelesslasik.html" class="drop-link-child">Bladeless Lasik Treatment</a></li>
+															<li><a href="ICL.html" class="drop-link-child">ICL For High Myopia</a></li>
+														 </ul>
+													   </div>
+													</li>
+												<li> <a style="padding-left: 10px;" class="drop-link" href="retina.html">Retina </a></li>
+												<li> <a class="drop-link" href="Glaucoma.html">Glaucoma</a></li>
+												<li> <a class="drop-link" href="Pediatric-Ophthalmology-and-Squint.html">Pediatric</a></li>
+												<li> <a class="drop-link" href="Oculoplasty.html">Oculoplasty</a></li>
+											
+											</ul>
+
+										</div>
+										<!-- <a href="#"></a> -->
+										<a href="#" ></a>
+
+										</li>
+
+
+									</ul>
+									
+									<ul>
+										<li><a href="Second-Opinion.html">Second Opinion</a></li>
+										<li class="word">
+											<br>
+											<a href="prosthetic-eye.html">prosthetic eye
+												
+											</a>
+										</li>
+ 
+											<li class="padding-bottom-50" > <a  href="contact-lens.html">contact lens</a></li>
+
+									
+										<!-- <li><a href="Pediatric-Ophthalmology-and-Squint.html">Pediatric Ophthalmology &
+												Squint</a></li>
+										<li><a href="Oculoplasty.html">Oculoplasty</a></li>
+										<li><a href="Optometry.html">Optometry  <br><br></a></li>
+										<li><a href="Second-Opinion.html">Second Opinion </a></li> -->
+
+									</ul>
+
+								</div>
+							</li>
+							
+
+							<!-- <li class="dropdown">
+								<a href="Facilities.html" class="dropdown-toggle" ><i class="fa fa-plus"></i>Our
+									Facilities</a>
+								<ul class="dropdown-menu">
+									<li><a href="about-us.html">About Us One</a></li>
+									<li><a href="about-us2.html">About Us Two</a></li>
+								</ul>
+							</li> -->
+
+							<li class="dropdown">
+								<a href="international-patient-services.html" class="dropdown-toggle" ><i
+										class="fa fa-plus"></i>International Patient Service</a>
+								<!-- <ul class="dropdown-menu">
+									<li><a href="about-us.html">About Us One</a></li>
+									<li><a href="about-us2.html">About Us Two</a></li>
+								</ul> -->
+							</li>
+
+							<!-- <li class="mega-menu-item dropdown">
+								<a href="#" class="dropdown-toggle" data-toggle="dropdown"><i
+										class="fa fa-plus"></i>Resources</a>
+								<div class="mega-menu dropdown-menu">
+									<img src="images/banner/international-banner2.png" class="img-rounded" alt="" title="">
+									<ul>
+										<li><a href="Payments-EMI.html">Payment & EMI</a></li>
+										<li><a href="Registration-Form.html">Registration Form</a></li>
+										<li><a href="Self-Evaluation.html">Self Evaluation</a></li>
+
+
+									</ul>
+									<ul>
+										<li><a href="Explainer-video.html">Explainer Video</a></li>
+
+									</ul>
+
+								</div>
+							</li> -->
+							<li class="dropdown">
+								<a href="#" class="dropdown-toggle" ><i
+										class="fa fa-plus"></i>Our gallery</a>
+								<!-- <ul class="dropdown-menu">
+									<li><a href="about-us.html">About Us One</a></li>
+									<li><a href="about-us2.html">About Us Two</a></li>
+								</ul> -->
+							</li>
+
+							<li class="dropdown">
+								<a href="Insurance.html" class="dropdown-toggle" ><i
+										class="fa fa-plus"></i>Insurance</a>
+								<!-- <ul class="dropdown-menu">
+									<li><a href="about-us.html">About Us One</a></li>
+									<li><a href="about-us2.html">About Us Two</a></li>
+								</ul> -->
+							</li>
+
+							<li class="dropdown">
+								<a href="#" class="dropdown-toggle" ><i
+										class="fa fa-plus"></i>Resource</a>
+								<ul class="dropdown-menu">
+									<li><a href="about-us.html">Blog</a></li>
+									<li><a href="about-us2.html">Success Story</a></li>
+								</ul>
+							</li>
+
+
+							<li class="dropdown last">
+								<a href="contact-us.html" class="dropdown-toggle" ><i
+										class="fa fa-plus"></i>Contact Us</a>
+								<!-- <ul class="dropdown-menu">
+									<li><a href="contact-us.html">Contact Us one</a></li>
+									<li><a href="contact-us2.html">Contact Us two</a></li>
+								</ul> -->
+							</li>
+
+						</ul>
+
+					</div>
+				</nav>
+
+			</div>
+
+		</header>
+
+		<div id="content-index">
+			<div class="mobile-navbar">
+				<div class="logo">
+					<a href="index.html"><img src="images/logo.png" alt="" title="" class="navbar-brands2"></a>
+				</div>
+	
+				<div class="menu-bars" onclick="openmenu1()">
+					<svg xmlns="http://www.w3.org/2000/svg" height="30" width="30" viewBox="0 0 448 512"><!--!Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2023 Fonticons, Inc.--><path fill="#000000" d="M0 96C0 78.3 14.3 64 32 64H416c17.7 0 32 14.3 32 32s-14.3 32-32 32H32C14.3 128 0 113.7 0 96zM0 256c0-17.7 14.3-32 32-32H416c17.7 0 32 14.3 32 32s-14.3 32-32 32H32c-17.7 0-32-14.3-32-32zM448 416c0 17.7-14.3 32-32 32H32c-17.7 0-32-14.3-32-32s14.3-32 32-32H416c17.7 0 32 14.3 32 32z"/></svg>
+				</div>
+	
+	<div class="menu-items" id="openmenu1">
+		<ul class="main-ul">
+	<a href="about-us.html" class="link-no"><li><svg xmlns="http://www.w3.org/2000/svg" height="16" width="14" viewBox="0 0 448 512"><!--!Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2023 Fonticons, Inc.--><path fill="#da8d00" d="M256 80c0-17.7-14.3-32-32-32s-32 14.3-32 32V224H48c-17.7 0-32 14.3-32 32s14.3 32 32 32H192V432c0 17.7 14.3 32 32 32s32-14.3 32-32V288H400c17.7 0 32-14.3 32-32s-14.3-32-32-32H256V80z"/></svg>
+		&nbsp; &nbsp; About DSEH</li></a>
+	
+	<!-- <a href="index.html" class="link-no"><li><svg xmlns="http://www.w3.org/2000/svg" height="16" width="14" viewBox="0 0 448 512"><path fill="#da8d00" d="M256 80c0-17.7-14.3-32-32-32s-32 14.3-32 32V224H48c-17.7 0-32 14.3-32 32s14.3 32 32 32H192V432c0 17.7 14.3 32 32 32s32-14.3 32-32V288H400c17.7 0 32-14.3 32-32s-14.3-32-32-32H256V80z"/></svg>
+		&nbsp; &nbsp; Home</li>
+	</a> -->
+	
+	<div onclick="openmenu2()" class="link-no"><li class="parent-ele"><svg xmlns="http://www.w3.org/2000/svg" height="16" width="14" viewBox="0 0 448 512"><!--!Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2023 Fonticons, Inc.--><path fill="#da8d00" d="M256 80c0-17.7-14.3-32-32-32s-32 14.3-32 32V224H48c-17.7 0-32 14.3-32 32s14.3 32 32 32H192V432c0 17.7 14.3 32 32 32s32-14.3 32-32V288H400c17.7 0 32-14.3 32-32s-14.3-32-32-32H256V80z"/></svg>
+		&nbsp; &nbsp; Our Specialties
+	<ul id="openmenu2" class="sub-menu">
+		<img src="images/banner/specialist-banner.jpg" alt="noimg" class="img-fluid img-rounded" style="padding: 30px;"/>
+	<a href="Comprehensive-ophthalmology.html"><li class="inner-font-menu">COMPREHENSIVE OPHTHALMOLOGY 1</li></a>
+	<a href="cataract.html"><li class="inner-font-menu">Cataract</li></a>
+	<a href="LASIK-and-Refractive.html"><li class="inner-font-menu">LASIK and Refractive</li></a>
+	<a href="Vitreo-Retina.html"><li class="inner-font-menu">Vitreo Retina and Diabetic Retinopathy</li></a>
+	<a href="Cornea.html"><li class="inner-font-menu">Cornea</li></a>
+	<a href="Pediatric-Ophthalmology-and-Squint.html"><li class="inner-font-menu">Pediatric Ophthalmology & Squint </li></a>
+	<a href="Oculoplasty.html"><li class="inner-font-menu">Oculoplasty </li></a>
+	<a href="Optometry.html"><li class="inner-font-menu">Optometry   </li></a>
+	</ul>
+	
+	</li></div>
+	
+	<a href="Our-Team.html" class="link-no"><li><svg xmlns="http://www.w3.org/2000/svg" height="16" width="14" viewBox="0 0 448 512"><!--!Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2023 Fonticons, Inc.--><path fill="#da8d00" d="M256 80c0-17.7-14.3-32-32-32s-32 14.3-32 32V224H48c-17.7 0-32 14.3-32 32s14.3 32 32 32H192V432c0 17.7 14.3 32 32 32s32-14.3 32-32V288H400c17.7 0 32-14.3 32-32s-14.3-32-32-32H256V80z"/></svg>
+		&nbsp; &nbsp; Our Team </li></a>
+	
+		<div  class="link-no"><li class="parent-ele"><p class="margin-0" onclick="openmenu3()">
+			<svg xmlns="http://www.w3.org/2000/svg" height="16" width="14" viewBox="0 0 448 512"><!--!Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2023 Fonticons, Inc.--><path fill="#da8d00" d="M256 80c0-17.7-14.3-32-32-32s-32 14.3-32 32V224H48c-17.7 0-32 14.3-32 32s14.3 32 32 32H192V432c0 17.7 14.3 32 32 32s32-14.3 32-32V288H400c17.7 0 32-14.3 32-32s-14.3-32-32-32H256V80z"/></svg>
+			&nbsp; &nbsp; Our Facilites
+		</p>
+		<ul id="openmenu3" class="sub-menu">
+			<img src="images/banner/international-image.jpg" alt="noimg" class="img-fluid img-rounded" style="padding: 30px;"/>
+		<a href="Second-Opinion.html"><li class="inner-font-menu">Second Opinion</li></a>
+		<!-- <a href="#"><li class="inner-font-menu"></li></a> -->
+				<li class="inner-font-menu2"><p style="margin-left: 30px;" class="margin-0" onclick="toglesubopenmenunew()"><svg xmlns="http://www.w3.org/2000/svg" height="16" width="10" viewBox="0 0 320 512"><!--!Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2023 Fonticons, Inc.--><path fill="#da8d00" d="M278.6 233.4c12.5 12.5 12.5 32.8 0 45.3l-160 160c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3L210.7 256 73.4 118.6c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0l160 160z"/></svg>
+								 &nbsp;	Other Services</p>
+							<ul id="subopenmenunew" class="sub-menu">
+											
+								<a href="Payments-EMI.html" class="link-no"><li class="inner-font-menu3">Payments-EMI</li></a>
+								<!-- <a href="Registration-Form.html" class="link-no"><li class="inner-font-menu3">Registration-Form</li></a> -->
+								<a href="Self-Evaluation.html" class="link-no"><li class="inner-font-menu3">Self-Evaluation</li></a>
+								<a href="TravelerDesk.html" class="link-no"><li class="inner-font-menu3">Traveller desk</li></a>
+								<a href="Explainer-video.html" class="link-no"><li class="inner-font-menu3">Explainer-video</li></a>
+							</ul>
+	
+				 </li>
+	
+	
+		<li class="inner-font-menu2"><p style="margin-left: 30px;" class="margin-0" onclick="toglesubopenmenu()"><svg xmlns="http://www.w3.org/2000/svg" height="16" width="10" viewBox="0 0 320 512"><!--!Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2023 Fonticons, Inc.--><path fill="#da8d00" d="M278.6 233.4c12.5 12.5 12.5 32.8 0 45.3l-160 160c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3L210.7 256 73.4 118.6c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0l160 160z"/></svg>
+							&nbsp;	Specialized Ophthalmic Services</p>
+			<ul id="subopenmenu" class="sub-menu">
+				<li class="inner-font-menu3">
+					<p  class="margin-0" onclick="togleinnersubopenmenu()"><svg xmlns="http://www.w3.org/2000/svg" height="16" width="10" viewBox="0 0 320 512"><!--!Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2023 Fonticons, Inc.--><path fill="#da8d00" d="M278.6 233.4c12.5 12.5 12.5 32.8 0 45.3l-160 160c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3L210.7 256 73.4 118.6c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0l160 160z"/></svg>
+						&nbsp;
+						Catract</p>
+					<ul id="innersubmenu1" class="sub-menu">
+				<a href="Monofocal.html" class="link-no"><li class="inner-font-menu2">Monofocal</li></a>
+				<a href="Multifocal.html" class="link-no"><li class="inner-font-menu2">Multifocal</li></a>
+				<a href="toric-lens.html" class="link-no"><li class="inner-font-menu2">Toric lens</li></a>
+					</ul>
+	
+				</li>
+				
+	
+				<li class="inner-font-menu3">
+					<p  class="margin-0" onclick="togleinnersubopenmenu2()"><svg xmlns="http://www.w3.org/2000/svg" height="16" width="10" viewBox="0 0 320 512"><!--!Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2023 Fonticons, Inc.--><path fill="#da8d00" d="M278.6 233.4c12.5 12.5 12.5 32.8 0 45.3l-160 160c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3L210.7 256 73.4 118.6c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0l160 160z"/></svg>
+						&nbsp;
+						Cornea & Refractive</p>
+					<ul id="innersubmenu2" class="sub-menu">
+						<a href="Bladelesslasik.html" class="link-no"><li class="inner-font-menu2">Bladeless Lasik Treatment</li></a>
+			<a href="ICL.html" class="link-no"><li class="inner-font-menu2">Icl For High Myopia</li></a>
+					</ul>
+	
+		</li>
+	
+	<a href="retina.html" class="link-no"><li class="inner-font-menu3">Retina </li></a>
+	<a href="Glaucoma.html" class="link-no"><li class="inner-font-menu3">Glaucoma </li></a>
+	<a href="Pediatric-Ophthalmology-and-Squint.html" class="link-no"><li class="inner-font-menu3">Pediatric </li></a>
+	<a href="Oculoplasty.html" class="link-no"><li class="inner-font-menu3">Oculoplasty</li></a>
+	</ul>
+	
+			</li>
+	
+		<a href="prosthetic-eye.html"><li class="inner-font-menu">
+			prosthetic eye</li></a>
+			<a href="contact-lens.html"><li class="inner-font-menu">
+				contact lens</li></a>
+	
+		</ul>
+		
+		</li></div>
+	
+	<a href="international-patient-services.html" class="link-no"><li><svg xmlns="http://www.w3.org/2000/svg" height="16" width="14" viewBox="0 0 448 512"><!--!Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2023 Fonticons, Inc.--><path fill="#da8d00" d="M256 80c0-17.7-14.3-32-32-32s-32 14.3-32 32V224H48c-17.7 0-32 14.3-32 32s14.3 32 32 32H192V432c0 17.7 14.3 32 32 32s32-14.3 32-32V288H400c17.7 0 32-14.3 32-32s-14.3-32-32-32H256V80z"/></svg>
+		&nbsp; &nbsp; International Patient Service</li></a>
+	
+		<!-- <div onclick="openmenu4()" class="link-no"><li class="parent-ele"><svg xmlns="http://www.w3.org/2000/svg" height="16" width="14" viewBox="0 0 448 512"><path fill="#da8d00" d="M256 80c0-17.7-14.3-32-32-32s-32 14.3-32 32V224H48c-17.7 0-32 14.3-32 32s14.3 32 32 32H192V432c0 17.7 14.3 32 32 32s32-14.3 32-32V288H400c17.7 0 32-14.3 32-32s-14.3-32-32-32H256V80z"/></svg>
+			&nbsp; &nbsp; Resources
+		<ul id="openmenu4" class="sub-menu">
+			<img src="images/banner/international-banner2.png" alt="noimg" class="img-fluid img-rounded" style="padding: 30px;"/>
+		<a href="Payments-EMI.html"><li class="inner-font-menu">Payment & EMI</li></a>
+		<a href="Registration-Form.html"><li class="inner-font-menu">Registration From</li></a>
+		<a href="Self-Evaluation.html"><li class="inner-font-menu">Self Evaluation</li></a>
+		<a href="Explainer-video.html"><li class="inner-font-menu">Expaliner Video</li></a>
+		</ul>
+		
+		</li></div> -->
+	
+	<a href="Insurance.html" class="link-no"><li><svg xmlns="http://www.w3.org/2000/svg" height="16" width="14" viewBox="0 0 448 512"><!--!Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2023 Fonticons, Inc.--><path fill="#da8d00" d="M256 80c0-17.7-14.3-32-32-32s-32 14.3-32 32V224H48c-17.7 0-32 14.3-32 32s14.3 32 32 32H192V432c0 17.7 14.3 32 32 32s32-14.3 32-32V288H400c17.7 0 32-14.3 32-32s-14.3-32-32-32H256V80z"/></svg>
+		&nbsp; &nbsp; Insurance</li></a>
+	
+	<a href="contact-us.html" class="link-no"><li><svg xmlns="http://www.w3.org/2000/svg" height="16" width="14" viewBox="0 0 448 512"><!--!Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2023 Fonticons, Inc.--><path fill="#da8d00" d="M256 80c0-17.7-14.3-32-32-32s-32 14.3-32 32V224H48c-17.7 0-32 14.3-32 32s14.3 32 32 32H192V432c0 17.7 14.3 32 32 32s32-14.3 32-32V288H400c17.7 0 32-14.3 32-32s-14.3-32-32-32H256V80z"/></svg>
+		&nbsp; &nbsp; Contact us</li></a>
+	
+	
+		</ul>
+	</div>
+	
+				
+	
+			</div>
+	
+
       <!-- Breadcrumb area start  -->
         <!-- End Page Title -->
 
@@ -371,7 +623,7 @@ if ($Result && $Result->num_rows > 0) {
                             </div>
                             <input name="PostId" value="<?php echo $PostID ?>" type="hidden">
                             <div style="margin-left:10px;margin-top:20px">
-                                <button style="background-color:#FF7C5B;color:white;padding:15px 40px" name="AddComment"
+                                <button style="background-color:#eca328;color:white;padding:15px 40px" name="AddComment"
                                     type="submit" class="w3-button w3-white w3-border"><b>Comment</b></button>
                             </div>
                         </div>
@@ -410,174 +662,327 @@ if ($Result && $Result->num_rows > 0) {
     </div><!-- /.page-wrapper -->
 </body>
  <!-- Footer area start -->
- <footer>
-      <section class="footer-bg">
-         <div class="footer-area">
-            <div class="container">
-               <div class="footer-grid b-b">
-                  <div class="footer-widget-2 footer-col-1">
-                     <div class="footer-logo mb-35">
-                        <a href="index.html">
-                           <img src="../assets/imgs/logo/KV_LOGO.webp" alt="image bnot found"
-                              >
-                        </a>
-                     </div>
+ <footer id="footer" class="light">
+		<div class="colourfull-row"></div>
 
-                     <div class="footer-widget-info">
-                        <div class="footer-info mb-35">
-                           <div class="footer-info-item d-flex align-items-start">
-                              <div class="footer-info-icon mr-20">
-                                 <span> <i class="fa-solid fa-location-dot"></i></span>
-                              </div>
-   
-                              <div class="footer-info-text">
-                                 <a style="color: rgba(255, 255, 255, 0.7)" >Kalppa Virusha hospital
-   RG Arcade, Sarjapur Rd,
-   Anekal Taluk, Attibele,
-   Anekal Taluk, Attibele,
-   Bangalore-562107</a>
-                              </div>
-   
-                           </div>
-                           <div class="footer-info-item d-flex align-items-start">
-                              <div class="footer-info-icon mr-20">
-                                 <span><i class="fa-solid fa-envelope"></i></span>
-                              </div>
-   
-                              <div class="footer-info-text">
-                                 <a href="mailto:care.kvh@gmail.com">care.kvh@gmail.com</a>
-                              </div>
-   
-                           </div>
-                           <div class="footer-info-item d-flex align-items-start">
-                              <div class="footer-info-icon mr-20">
-                                 <span><i class="fa-solid fa-phone"></i></span>
-                              </div>
-   
-                              <div class="footer-info-text">
-                                 <a href="tel:+91843-192-2016">+91843-192-2016</a>
-                              </div>
-                           </div>
-                        </div>
-                        <div class="theme-social">
-                           <a href="https://www.facebook.com/Kalppavirushahospital"><i class="fa-brands fa-facebook-f"></i></a>
-   
-   
-                           <a href="https://x.com/Kalppa_virusha"><i class="fa-brands fa-twitter"></i></a>
-                           <a href="https://www.instagram.com/kalppavirusha/"><i class="fa-brands fa-instagram"></i></a>
-   
-                           <a href="https://www.linkedin.com/company/26620598/admin/"><i class="fa-brands fa fa-linkedin"></i></a>
+		<!-- <div class="container">
 
-                           <a href="https://in.pinterest.com/kalppavirushahospital/"><i class="fa-brands fa fa-pinterest"></i></a>
-                        </div>
-                     </div>
+			<div class="row">
 
-                  </div>
+				<div class="col-md-4">
 
-                 
+					<div class="footer-widget">
 
-                  <div class="footer-widget-2 footer-col-2">
-                     <div class="footer-widget-title">
-                        <h4>Department</h4>
-                     </div>
-                     <div class="footer-link">
-                        <ul>
-                           <li style="white-space: nowrap;"><a href="service.html">Obestric Gyneacology</a></li>
-                           <li><a href="service.html">General Medicine</a></li>
-                           <li><a href="service.html">General Surgeon</a></li>
-                           <li><a href="service.html">Pediatrician</a></li>
-                           <li><a href="service.html">Ortho Surgeon</a></li>
-                           <li><a href="service.html">...View More...</a></li>
-                        </ul>
-                     </div>
-                  </div>
-                  <div class="footer-widget-2 footer-col-3">
-                     <div class="footer-widget-title">
-                        <h4 style="white-space: nowrap;">Quick Links</h4>
-                     </div>
-                     <div class="footer-link">
-                        <ul>
-                           <li><a href="index.html">Home</a></li>
-                           <li><a href="about.html">About Us</a></li>
-                           <li><a href="team.html">Team</a></li>
-                           <li><a href="service.html">services</a></li>
-                           <li><a href="contact.html">Contacts</a></li>
-                        </ul>
-                     </div>
-                  </div>
-                  <div class="footer-widget-2 footer-col-4">
-                     <div class="footer-widget-title">
-                        <h4>Get Direction</h4>
-                     </div>
-                     <div class="theme-social">
-                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3890.9523447514293!2d77.76888647358547!3d12.781605319018361!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bae73012a8a35e5%3A0xd14495893544d479!2sKalppa%20Virusha%20Hospital!5e0!3m2!1sen!2sin!4v1725605766219!5m2!1sen!2sin" width="100%" height="200" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-                     </div>
-                  </div>
-               </div>
-            </div>
-         </div>
-         <div class="footer-copyright-area">
-            <div class="container">
-               <div class="footer-copyright-wrapper">
-                  <div class="footer-copyright-text">
-                     <p class="mb-0">© All Copyright 2024 by <a target="_blank" href="#">Kalppa Virusha Hospital</a></p>
-                  </div>
-                  <div class="footer-conditions">
-                     <ul>
-                        <li><a href="#">Terms & Condition</a></li>
-                        <li><a href="#">Privacy Policy</a></li>
-                     </ul>
-                  </div>
-               </div>
-            </div>
-         </div>
-      </section>
-   </footer>
-   <!-- Footer area end -->
+						<h5><span>Our Specialties</span></h5>
+
+						<ul class="footer-nav list-unstyled clearfix">
+							<li><a href="Comprehensive-ophthalmology.html"><i
+										class="fa fa-long-arrow-right"></i>Comprehensive Ophthalmology</a>
+							</li>
+							<li><a href="cataract.html"><i class="fa fa-long-arrow-right"></i>Cataract
+									Cataract</a></li>
+							<li><a href="LASIK-and-Refractive.html"><i class="fa fa-long-arrow-right"></i>LASIK and
+									Refractive</a></li>
+							<li><a href="Vitreo-Retina.html"><i class="fa fa-long-arrow-right"></i>Vitreo Retina and
+									Diabetic
+									Retinopathy Cataract</a></li>
+							<li><a href="Glaucoma.html"><i class="fa fa-long-arrow-right"></i>Glaucoma Cataract</a>
+							</li>
+							<li><a href="Cornea-Cataract.html"><i class="fa fa-long-arrow-right"></i>Cornea Cataract</a>
+							</li>
+							<li><a href="Pediatric-Ophthalmology-and-Squint.html"><i
+										class="fa fa-long-arrow-right"></i>Pediatric Ophthalmology &
+									Squint</a></li>
+							<li><a href="Oculoplasty.html"><i class="fa fa-long-arrow-right"></i>Oculoplasty</a>
+							</li>
+							<li><a href="Optometry-Cataract.html"><i class="fa fa-long-arrow-right"></i>Optometry
+									Cataract</a></li>
+
+						</ul>
+
+					</div>
+
+				</div>
+
+				<div class="col-md-3">
+
+					<div class="footer-widget">
+
+						<h5><span>International Patient Services</span></h5>
+
+						<ul class="footer-nav list-unstyled clearfix">
+							<li><a href="international-patient-services.html"><i
+										class="fa fa-long-arrow-right"></i>Introduction</a></li>
+							<li><a href="international-patient-services.html"><i
+										class="fa fa-long-arrow-right"></i>Serivces</a></li>
+							<li><a href="international-patient-services.html"><i
+										class="fa fa-long-arrow-right"></i>Contact Details</a></li>
+
+						</ul>
+
+					</div>
+
+				</div>
+
+				<div class="col-md-3">
+
+					
+					<div class="footer-widget">
+
+						<h5><span>About DSEH</span></h5>
+
+						<ul class="footer-nav list-unstyled clearfix">
+							<li><a href="about-us.html"><i class="fa fa-long-arrow-right"></i>Introduction</a></li>
+							<li><a href="about-us.html"><i class="fa fa-long-arrow-right"></i>Vision, Mission & Core
+									Values</a>
+							</li>
+							<li><a href="about-us.html"><i class="fa fa-long-arrow-right"></i>Management Team</a>
+							</li>
+							<li><a href="about-us.html"><i class="fa fa-long-arrow-right"></i>Chairmans Messages</a>
+							</li>
+							<li><a href="about-us.html"><i class="fa fa-long-arrow-right"></i>Community Outreach</a>
+							</li>
+
+						</ul>
+
+					</div>
+
+				</div>
+
+				<div class="col-md-2">
+
+					
+					<div class="footer-widget">
+
+						<h5><span>Resources</span></h5>
+
+						<ul class="footer-nav list-unstyled clearfix">
+							<li><a href="Payments-EMI.html"><i class="fa fa-long-arrow-right"></i>Payment & EMI</a>
+							</li>
+							<li><a href="Payments-EMI.html"><i class="fa fa-long-arrow-right"></i>Registration
+									Forms</a></li>
+							<li><a href="Payments-EMI.html"><i
+										class="fa fa-long-arrow-right"></i>Self-Evaluation</a></li>
+							<li><a href="Payments-EMI.html"><i class="fa fa-long-arrow-right"></i>Explainer
+									Videos</a></li>
+						
+
+						</ul>
 
 
-<script src="../blog_pages/script-log.js"></script>
-<!-- jequery plugins -->
-<!-- <script src="../assets/js/jquery.js"></script>
-<script src="../assets/js/popper.min.js"></script>
-<script src="../assets/js/bootstrap.min.js"></script>
-<script src="../assets/js/owl.js"></script>
-<script src="../assets/js/wow.js"></script>
-<script src="../assets/js/validation.js"></script>
-<script src="../assets/js/jquery.fancybox.js"></script>
-<script src="../assets/js/appear.js"></script>
-<script src="../assets/js/scrollbar.js"></script>
-<script src="../assets/js/jquery.nice-select.min.js"></script>
-<script src="../assets/js/jquery-ui.js"></script> -->
- <!-- main-js -->
- <script src="assets/js/script.js"></script>
-     <!-- JS here -->
-   <script src="../assets/js/jquery-3.6.0.min.js"></script>
-   <script src="../assets/js/waypoints.min.js"></script>
-   <script src="../assets/js/bootstrap.bundle.min.js"></script>
-   <script src="../assets/js/meanmenu.min.js"></script>
-   <script src="../assets/js/swiper.min.js"></script>
-   <script src="../assets/js/slick.min.js"></script>
-   <script src="../assets/js/magnific-popup.min.js"></script>
-   <script src="../assets/js/counterup.js"></script>
-   <script src="../assets/js/ajax-form.js"></script>
-   <script src="../assets/js/beforeafter.jquery-1.0.0.min.js"></script>
-   <script src="../assets/js/main.js"></script>
+					</div>
 
-<!-- main-js -->
-<script src="../assets/js/script.js"></script>
-<script>
-    // Feedback Notification
-    document.addEventListener('DOMContentLoaded', function () {
-        setTimeout(function () {
-            document.querySelectorAll('.alert').forEach(alert => alert.classList.add("bounceOutUp"));
-        }, 3000);
+				</div>
 
-        setTimeout(function () {
-            document.querySelectorAll('.alert').forEach(alert => alert.remove());
-        }, 4000);
-    });
-</script>
+
+			</div>
+
+		</div> -->
+		
+		
+  <div style="background-color: #F6F1EE;">
+		<div class="" style="padding: 50px" >
+			<div class="row" >
+				<div class="col-md-3 footer-font-size" style="padding-top: 5px;"><a href="#.">
+					<img src="../images/logo-removebg-preview-removebg-preview.png" alt="" title="Medicom Logo" style="height: 60px; "></a>
+							<br>
+							<br>
+					<p class="mt-4">Welcome to Dr. Solanki Eye Hospital.
+						<br>
+
+						We are an outcome of 35 years of passion, experience, and skills backed by dedication
+						delivering.... Simply Eye Care.
+						<br>
+						With Warm Regards,
+						Dr. Narpat Solanki, Chief Medical Director
+					</p>
+				</div>
+				<div class="col-md-2 ">
+					<h5 class="" style="color: #eca328;">Quick links</h5>
+					<!-- <div class="col-md-3 footer-font-size">
+						<a href="Comprehensive-ophthalmology.html">
+							<p class="quick-links-items"><i class="fa fa-long-arrow-right" ></i>Comprehensive Ophthalmology</p>
+						</a>
+						<a href="cataract.html">
+							<p  class="quick-links-items"><i class="fa fa-long-arrow-right" ></i>Cataract</p>
+						</a>
+						<a href="LASIK-and-Refractive.html">
+							<p  class="quick-links-items"><i class="fa fa-long-arrow-right" ></i>LASIK and Refractive</p>
+						</a>
+						<a href="Vitreo-Retina.html">
+							<p  class="quick-links-items"><i class="fa fa-long-arrow-right"  ></i>Vitreo Retina and Diabetic Retinopathy</p>
+						</a>
+				
+						<a href="Glaucoma.html">
+							<p  class="quick-links-items"><i class="fa fa-long-arrow-right"  ></i>Glaucoma</p>
+						</a>
+					</div> -->
+					<!-- <div class="col-md-3">
+						
+						<a href="Cornea.html">
+							<p  class="quick-links-items"><i class="fa fa-long-arrow-right"  ></i>Cornea  </p>
+						</a>
+						<a href="Pediatric-Ophthalmology-and-Squint.html">
+							<p  class="quick-links-items"><i class="fa fa-long-arrow-right"  ></i>Pediatric Ophthalmology & Squint</p>
+						</a>
+						<a href="Oculoplasty.html">
+							<p  class="quick-links-items"><i class="fa fa-long-arrow-right"  ></i>Oculoplasty</p>
+						</a>
+						<a href="Optometry.html">
+							<p  class="quick-links-items"><i class="fa fa-long-arrow-right"  ></i>Optometry</p>
+						</a>
+					</div> -->
+					
+						<a href="../index.html">
+							<p  class="quick-links-items"><i class="fa fa-long-arrow-right"  ></i>Home</p>
+						</a>
+						<a href="../about-us.html">
+							<p  class="quick-links-items"><i class="fa fa-long-arrow-right"  ></i>About DSEH</p>
+						</a>
+						<a href="../cataract.html">
+							<p  class="quick-links-items"><i class="fa fa-long-arrow-right"  ></i>Our Specialtiest</p>
+						</a>
+						<a href="../Our-Team.html">
+							<p  class="quick-links-items"><i class="fa fa-long-arrow-right"  ></i>Our Team</p>
+						</a>
+						<a href="../Monofocal.html">
+							<p  class="quick-links-items"><i class="fa fa-long-arrow-right"  ></i>Our Facilities</p>
+						</a>
+						
+						<a href="../international-patient-services.html">
+							<p  class="quick-links-items"><i class="fa fa-long-arrow-right"  ></i>International Patient Service</p>
+						</a>
+						<a href="../Insurance.html">
+							<p  class="quick-links-items"><i class="fa fa-long-arrow-right"  ></i>Insurance</p>
+						</a>
+						<a href="#">
+							<p  class="quick-links-items"><i class="fa fa-long-arrow-right"  ></i>Resource</p>
+						</a>
+						<a href="../contact-us.html">
+							<p  class="quick-links-items"><i class="fa fa-long-arrow-right"  ></i>Contact Us</p>
+						</a>
+					
+				</div>
+				
+				<div class="col-md-3 next-footer footer-font-size">
+					<h5 style="color: #eca328;">Contact Info</h5>
+					<p > <i class="fa fa-map-marker" style="color: #046ab0;"></i> #191/1, Link Road, 2nd Cross, Malleswaram, Bangalore - 560 003</p>
+					<p>
+						Appointment: <br>
+						<i class="fa fa-phone" style="color: #046ab0;"></i><a href="tel: +91 08 2356 2211" style="color: gray;"> 08 2356 2211 </a>/<a href="tel: 2356 2299" style="color: gray;"> 2356 2299 </a>
+
+					</p>
+					<p>
+						Helpline :<br>
+						<i class="fa fa-phone" style="color: #046ab0;"></i><a href="tel: +91 94490 50206" style="color: gray;"> 94490 50206 </a>/<a href="tel: 94490 50207" style="color: gray;">94490 50207 </a>
+					</p>
+				
+					<p>
+						Emergency : 
+						<i class="fa fa-phone" style="color: #046ab0;"></i><a href="tel:  +91 95916 38909" style="color: gray;"> 95916 38909</a>
+					</p>
+					<p>
+						<i class="fa fa-envelope" style="color: #046ab0;"></i><a style="color: gray;" href="mailto:info@drsolankieyehospital.com"> info@drsolankieyehospital.com</a>
+					</p>
+				</div>
+				<div class="col-md-4">
+					<h5 style="color: #eca328;">Location</h5>
+
+					<iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d7775.271521436051!2d77.57384!3d12.995133!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bae163b521be895%3A0xc3990ec6cc9b858f!2sDr.Solanki%20Eye%20Hospital!5e0!3m2!1sen!2sin!4v1695190213611!5m2!1sen!2sin" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+					<ul class="social-rounded">
+								<li><a href="https://www.facebook.com/profile.php?id=100063949147300"><i class="fa fa-facebook" style="color: #eca328;"></i></a></li>								
+								<li><a href="https://www.youtube.com/@Drsolankieyehospital2024"><i class="fa fa-youtube" style="color: #eca328;"></i></a></li>
+								<li><a href="https://www.instagram.com/dr_solankieyehospital/?hl=en"><i class="fa fa-instagram" style="color: #eca328;"></i></a></li>
+								<li><a href="https://www.linkedin.com/company/106284134/admin/dashboard/"><i class="fa fa-linkedin" style="color: #eca328;"></i></a></li>
+								<li><a href="https://x.com/Drsolankie10201"><i class="fa fa-twitter" style="color: #eca328;"></i></a></li>
+								<li><a href="https://in.pinterest.com/drsolankieyehospital/"><i class="fa fa-pinterest" style="color: #eca328;"></i></a></li>
+		
+							</ul>
+				</div>
+				   
+			</div>
+			<div class="row">
+				<div class="col-md-12">
+					<a href="#">
+						<p style="font-weight: 600; margin: 0px; font-size: 15px; text-align:right;">Privacy Policy | Terms & Conditions</p>
+					</a>
+					
+				  </div>
+			</div>
+			<p class="copyright text-center">Copyright © 2025 Dr. Solanki Eye Hospital. All rights reserved.</p>
+		</div>
+		
+		
+		
+
+	</div>
+
+<!-- Copyright
+============================================= -->
+
+		<!-- Footer Bottom
+============================================= -->
+
+
+
+	</footer>
+	<!-- back to top -->
+	<a href="#." class="back-to-top" id="back-to-top"><i class="fa fa-angle-up"></i></a>
+
+	</div><!--end #wrapper-->
+
+
+
+	<!-- All Javascript 
+	============================================= -->
+	<script src="../js/jquery.js"></script>
+	<script src="../js/bootstrap.min.js"></script>
+	<script src="../js/jquery.stellar.js"></script>
+	<script src="../js/jquery-ui-1.10.3.custom.js"></script>
+	<script src="../js/owl.carousel.js"></script>
+	<script src="../js/counter.js"></script>
+	<script src="../js/waypoints.js"></script>
+	<script src="../js/jquery.uniform.js"></script>
+	<script src="../js/easyResponsiveTabs.js"></script>
+	<script src="../js/jquery.fancybox.pack.js"></script>
+	<script src="../js/jquery.fancybox-media.js"></script>
+	<script src="../js/jquery.mixitup.js"></script>
+	<script src="../js/forms-validation.js"></script>
+	<script src="../js/jquery.jcarousel.min.js"></script>
+	<script src="../js/jquery.easypiechart.min.js"></script>
+	<script src="../js/scripts.js"></script>
+
+	<!-- This page
+	============================================= -->
+	<script src="../js/jquery.themepunch.plugins.min.js"></script>
+	<script src="../js/jquery.themepunch.revolution.min.js"></script>
+
+
+	<script>
+
+		// (function () {
+
+		// 	// Revolution slider
+		// 	var revapi;
+		// 	revapi = jQuery('.tp-banner').revolution(
+		// 		{
+		// 			delay: 9000,
+		// 			startwidth: 1170,
+		// 			startheight: 682,
+		// 			hideThumbs: 200,
+		// 			fullWidth: "on",
+		// 			forceFullWidth: "on"
+		// 		});
+
+		// })();
+
+		// function loadabout(){
+		// 	window.location.href = "/about-us.html";
+		// }
+
+		// loadabout()
+	</script>
+
 </body>
 
 </html>

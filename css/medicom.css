@@ -744,7 +744,7 @@ HEADER
 	}
 
 	.fixed-header.small-header .medical-nav .navbar-default .navbar-collapse li a {
-		padding: 23px 20px 14px;
+		padding: 26px 7px 20px !important;
 		-webkit-transition: padding 0.2s ease-in-out;
 		transition: padding 0.2s ease-in-out;
 	}
