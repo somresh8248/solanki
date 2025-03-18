@@ -2017,6 +2017,7 @@ background-size: 100%;
 
 .sub-page-banner-cataract{
 background: url(../images/inner-pages/side-view-young-brunette-female-.jpg) no-repeat center;
+
 }
 
 .sub-page-banner-lasik{
@@ -2159,7 +2160,7 @@ background: url(../images/inner-pages/side-view-young-brunette-female-.jpg) no-r
 .sub-page-banner-monofocal,.sub-page-banner-contact-lens{
 	background: url(../images/inner-pages/monofocal-banner.jpg) no-repeat center ;
 	background-size: 100%;
-	height: 400px;
+	height: 440px;
 	border-bottom: 2px solid black;
 }
 .sub-page-banner-multifocal{
@@ -2197,8 +2198,9 @@ background: url(../images/inner-pages/side-view-young-brunette-female-.jpg) no-r
 
 .entry-title {
 	color: #fff;
-	padding: 32px 0 0;
+	padding: 126px 0 0;
 	margin-bottom: 11;
+	text-transform: uppercase;
 }
 
 .sub-page-banner p {
@@ -4214,7 +4216,7 @@ footer.light .newsletter input[type="email"] {
 }
 
 footer.light .copyright {
-	background: #f5f5f5;
+	background: #f6f1ee;
 	border-bottom: 1px solid #e6e6e6;
 	color: #646464;
 	margin: 30px 0px 0px 0px;
@@ -7577,6 +7579,24 @@ display: block;
     }
    .sub-page-banner-pediatric{
         display: none;
+}	
+.sub-page-banner-monofocal{
+	display: none;
+}	
+.sub-page-banner-multifocal{
+	display: none;
+}	
+.sub-page-banner-toriclens {
+	display: none;
+}	
+.sub-page-banner-surgeries {
+	display: none;
+}	
+.sub-page-banner-phakic  {
+	display: none;
+}	
+.sub-page-banner-prosthetic  {
+	display: none;
 }	
 .sub-page-banner-oculoplasty{
         display: none;	

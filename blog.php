@@ -50,7 +50,7 @@
 	<!-- Medicom Style
 	============================================= -->
 	<link rel="stylesheet" href="css/medicom.css">
-   <link rel="stylesheet" href="assets_blog/style.css">
+   <!-- <link rel="stylesheet" href="assets_blog/style.css"> -->
 
    
 
@@ -85,6 +85,14 @@
 
 	<script src="js/modernizr-2.6.2.min.js"></script>
 	<script src="js/Toogle.js"></script>
+
+	<style>
+	.navbar-default a {
+    color: white !important;
+    font-weight: 600 !important;
+    font-size: 13px;
+}
+	</style>
 
 </head>
 

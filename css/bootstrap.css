@@ -4328,7 +4328,7 @@ textarea.input-group-sm > .input-group-btn > .btn {
         padding-bottom: 0;
     }
     .medical-nav .navbar-default .navbar-collapse li a {
-        padding: 15px 8px 25px !important;
+        padding: 15px 8px 30px !important;
         border-radius: 0;
     }
     .medical-nav .navbar-default .navbar-collapse li a i {
@@ -6962,7 +6962,7 @@ td.hidden-lg {
     }
     .sub-page-banner {
         height: auto;
-        padding-bottom: 50px;
+        padding-bottom: 0px;
     }
     .big-font {
         font-size: 14px;
