@@ -456,6 +456,12 @@ SOCIAL
 	border: 2px solid #d90472;
 }
 
+.social-rounded li a i.fa-instagram:hover {
+	background: #E1306C;
+	border: 2px solid #d90472;
+}
+
+
 /* .... SOCIAL 2 .... */
 .social2 {
 	padding: 10px;
